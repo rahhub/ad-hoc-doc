@@ -1,0 +1,20 @@
+# Run with: docker-compose run --rm TARGET
+version: "3"
+services:
+  # These run as root
+  kali:
+    image: rah-kali
+    build: kali
+    volumes:
+      - ./shared:/shared
+  ubuntu:
+    image: rah-ubuntu
+    build: ubuntu
+    volumes:
+      - ./shared:/shared
+  # These run as non-root UID
+  ansible:
+    image: rah-ansible
+    build: ansible
+    volumes:
+      - ./shared:/shared
